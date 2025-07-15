@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/LoginSystem/Consultant/c_login.php" method="post" id="form">
+            <label for="Email" class="Email">Email:</label>
+            <input type="text" class="Email" id="Email" name="Email" required>
+            <br>
+            <label for="Password" class="Password">Password:</label>
+            <input type="password" class="Password" id="Password" name="Password" required >
+            <br>
+            <input type="submit"  value="Submit">
+        </form>
+    </div>
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event){
+            let Email = document.getElementById("Email").value;
+            if (!Email.includes("@gmail.com")){
+                alert ("Please input a valid Email");
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

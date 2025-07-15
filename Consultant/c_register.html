@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/LoginSystem/Consultant/c_register.php" method="post" id="form">
+            <div class="container">
+                <label for="Username" class="Username">Username:</label>
+                <input type="text" class="Username" id="Username" name="Username" placeholder="Input a username" required>
+                <br>
+                <label for="Expertise" class="Expertise">Expertise:</label>
+                <select name="Expertise" id="Expertise" name="Expertise">
+                    <option value="Web developer"> Web Development</option>
+                    <option value="Software developer">Software developer</option>
+                    <option value="Cloud Computing"> Cloud Computing</option>
+                </select>
+                <br>
+                <label for="Email" class="Email">Email:</label>
+                <input type="text" class="Email" id="Email" name="Email" placeholder="example@gmail.com" required>
+                <br>
+                <label for="Password" class="Password">Password:</label>
+                <input type="password" class="Password" id="Password" name="Password" placeholder="********" required>
+                <p class="warning">Password must contains at least 8 characters</p>
+                <input type="submit" class="Submit">
+            </div>
+        </form>
+    </div>
+<style>
+    .wrapper{
+        background-color: rgb(15, 171, 214);
+        width: 30%;
+        border-radius: 20px;
+        justify-content: center;
+        align-self: center;
+        align-content: center;
+        justify-self: center;
+        padding: 40px;
+    }
+    .container{
+        background-color: rgba(72, 185, 238, 0.074);
+    }
+</style>
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event){
+        let Email = document.getElementById("Email").value;
+        if(!Email.includes("@gmail.com")){
+            alert ("Please Input a valid email!!!");
+            event.preventDefault();
+        } 
+        let Password = document.getElementById("Password").value;
+        if (Password.length < 8){
+            alert ("Please make sure your password contains at least 8 characters");
+            event.preventDefault();
+        }
+        })
+        
+
+    </script>
+</body>
+</html>
