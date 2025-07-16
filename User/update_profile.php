@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once '../config/db.php';
-if(!isset($_SESSION['c_id'])){
-        header("Location: /LoginSystem/Consultant/c_login.html");
+if(!isset($_SESSION['user_id'])){
+        header("Location: /LoginSystem/User/u_login.html");
         exit;
     };
 

@@ -9,8 +9,8 @@
     <?php
     session_start();
     require_once '../config/db.php';
-    if(!isset($_SESSION['c_id'])){
-        header("Location: /LoginSystem/Consultant/c_login.html");
+    if(!isset($_SESSION['user_id'])){
+        header("Location: /LoginSystem/User/u_login.html");
         exit;
     };
     ?>
@@ -28,7 +28,9 @@
             <br>
             <input type="submit" value="Update">
         </form>
-        
+        <form action="u_logout.php" method="post">
+            <input type="submit" value="logout">
+        </form>
 <script>
     document.getElementById('form').addEventListener("submit", function(event){
         let Email = document.getElementById('new_email').value;

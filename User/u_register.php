@@ -9,7 +9,7 @@
     <?php
     require_once '../config/db.php';
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['Email'], $_POST["Password"], $_POST["Username"]))
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['Email'], $_POST["Password"], $_POST["Username"])){
         $Username = $_POST["Username"];
         $Email =  $_POST["Email"];
         $Password = $_POST["Password"];
@@ -29,6 +29,7 @@
                     echo "Registration failed. Please try again. <a href=''/LoginSystem/User/u_register.html'>Click here to Register</a>";
                 }
             } 
+        }
     ?> 
 </body>
 </html>
