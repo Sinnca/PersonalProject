@@ -15,13 +15,20 @@
         $Password = $_POST["Password"];
         $hash = password_hash($Password, PASSWORD_DEFAULT);
         
-    $sql = " INSERT INTO users (username, email, password) VALUES ('$Username', '$Email' , '$hash')";
-    $data = mysqli_query($conn, $sql);
-    if ($data){
-        echo "You have successfully registered. <a href='/LoginSystem/User/u_login.html'>Click here to login</a>";
-    }   else {
-        echo "Registration failed. Please try again. <a href=''/LoginSystem/User/u_register.html'>Click here to Register</a>";
-    }
+        $sql =  "SELECT * FROM users WHERE email = '$Email'";
+        $result = mysqli_query($conn, $sql);
+            if ($result && mysqli_num_rows($result) === 1){
+                echo "Email Taken";
+            } else {
+                $sql = " INSERT INTO users (username, email, password) VALUES ('$Username', '$Email' , '$hash')";
+                $data = mysqli_query($conn, $sql);
+                if ($data){
+                    header("Location: /LoginSystem/User/u_login.html");
+                    exit;
+                }   else {
+                    echo "Registration failed. Please try again. <a href=''/LoginSystem/User/u_register.html'>Click here to Register</a>";
+                }
+            } 
     ?> 
 </body>
 </html>
