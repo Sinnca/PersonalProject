@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+    session_start();
     require_once '../config/db.php';
     
         if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["Email"], $_POST["Password"])){
@@ -17,9 +18,13 @@
             $data = mysqli_query($conn, $sql);
 
             if ($data && mysqli_num_rows($data) === 1){
-                $user_details = mysqli_fetch_assoc($data);
+                $c_user = mysqli_fetch_assoc($data);
             
-            if (password_verify($Password, $user_details["password"])){
+            if (password_verify($Password, $c_user["password"])){
+                $_SESSION['c_id'] = $c_user['id'];
+                $_SESSION['c_username'] = $c_user['username'];
+                $_SESSION['c_expertise'] = $c_user['expertise'];
+                $_SESSION['c_email'] = $c_user['email'];
                 header("Location: /LoginSystem/Consultant/c_index.html");
                 exit;
             } else {

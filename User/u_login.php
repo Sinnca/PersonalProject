@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+    session_start();
     require_once '../config/db.php';
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["Email"], $_POST["Password"])){
         $Email = $_POST["Email"];
@@ -19,6 +20,9 @@
             $user = mysqli_fetch_assoc($result);
 
             if (password_verify($Password, $user["password"])){
+                $_SESSION["user_id"] = $user["id"];
+                $_SESSION["user_username"] = $user["username"];
+                $_SESSION["user_email"] = $user["email"];
                 header("Location: /LoginSystem/User/home.html");
                 exit;
             }   else {
