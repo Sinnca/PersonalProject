@@ -25,7 +25,7 @@
                 $_SESSION['c_username'] = $c_user['username'];
                 $_SESSION['c_expertise'] = $c_user['expertise'];
                 $_SESSION['c_email'] = $c_user['email'];
-                header("Location: /LoginSystem/Consultant/c_index.html");
+                header("Location: /LoginSystem/Consultant/c_index.php");
                 exit;
             } else {
                 echo "Incorrect password, please try again. <br> <a href='/LoginSystem/Consultant/c_login.html'>Click here to login again</a>";
