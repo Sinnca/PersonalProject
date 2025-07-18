@@ -29,6 +29,7 @@ if(!isset($_SESSION['user_id'])){
             $user_username = $_SESSION['user_username'];
             $user_email = $_SESSION['user_email'];
             header("Location: u_profile.php?updated=true");
+            exit;
         } else {
             echo "Update failed!";
         }
