@@ -9,6 +9,7 @@
     $c_username = $_SESSION['c_username'];
     $c_expertise = $_SESSION['c_expertise'];
     $c_id = $_SESSION['c_id'];
+    $c_email = $_SESSION['c_email'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +23,46 @@
     <?php if (isset($_GET['updated']) && $_GET['updated'] === 'true'): ?>
     <p style="color: green;">Updated Successfully!</p>
     <?php endif; ?>
+    <nav>
+        <div><a href="c_index.html">Home</a></div>
+        <div><a href="c_profile.php">Profile</a></div>
+    </nav>
+    <div class="container">
+        <h1>Consultant Profile</h1>
+        <form action="update_profile.php" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="new_username" value="<?= htmlspecialchars($c_username) ?>">
+            <label for="expertise">Expertise</label>
+            <input type="text" id="expertise" name="new_expertise" value="<?= htmlspecialchars($c_expertise) ?>">
+            <label for="Email">Email</label>
+            <input type="text" id="email" name="new_email" value="<?= htmlspecialchars($c_email) ?>">
+            <div class="actions">
+                <input type="submit" value="Update">
+            </div>
+        </form>
+        <div class="actions">
+            <form action="c_logout.php" method="post">
+                <input type="submit" value="Logout">
+            </form>
+            <form action="c_delete.php" method="post" onsubmit="return confirm('Are you sure to delete your account?')">
+                <input type="submit" value="Delete Account" style="background:#e74c3c;">
+            </form>
+        </div>
+        <div class="profile-info">
+            <?php
+            $c_id = $_SESSION['c_id'];
+            $c_username = $_SESSION['c_username'];
+            $c_expertise = $_SESSION['c_expertise'];
+            $c_email = $_SESSION['c_email'];
 
-    <style>
+            echo "<strong>Username:</strong> " . htmlspecialchars($c_username) . "<br>";
+            echo "<strong>Expertise:</strong> " . htmlspecialchars($c_expertise) . "<br>";
+            echo "<strong>Email:</strong> " . htmlspecialchars($c_email) . "<br>";
+            ?>
+        </div>
+    </div>
+
+<style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background: #f4f8fb;
@@ -102,43 +141,5 @@
             gap: 0.5em;
         }
     </style>
-    <nav>
-        <div><a href="c_index.html">Home</a></div>
-        <div><a href="c_profile.php">Profile</a></div>
-    </nav>
-    <div class="container">
-        <h1>Consultant Profile</h1>
-        <form action="update_profile.php" method="post">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="new_username" value="<?= htmlspecialchars($c_username) ?>">
-            <label for="expertise">Expertise</label>
-            <input type="text" id="expertise" name="new_expertise" value="<?= htmlspecialchars($c_expertise) ?>">
-            <div class="actions">
-                <input type="submit" value="Update">
-            </div>
-        </form>
-        <div class="actions">
-            <form action="c_logout.php" method="post">
-                <input type="submit" value="Logout">
-            </form>
-            <form action="c_delete.php" method="post" onsubmit="return confirm('Are you sure to delete your account?')">
-                <input type="submit" value="Delete Account" style="background:#e74c3c;">
-            </form>
-        </div>
-        <div class="profile-info">
-            <?php
-            $c_id = $_SESSION['c_id'];
-            $c_username = $_SESSION['c_username'];
-            $c_expertise = $_SESSION['c_expertise'];
-            $c_email = $_SESSION['c_email'];
-
-            echo "<strong>Username:</strong> " . htmlspecialchars($c_username) . "<br>";
-            echo "<strong>Expertise:</strong> " . htmlspecialchars($c_expertise) . "<br>";
-            echo "<strong>Email:</strong> " . htmlspecialchars($c_email) . "<br>";
-            ?>
-        </div>
-    </div>
-
-
 </body>
 </html>
